@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    container_name: blogdb
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_USER: blog_admin
+      POSTGRES_PASSWORD: 125436
+      POSTGRES_DB: blog_db
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    links:
+      - db
+    ports:
+      - 8080:8080
