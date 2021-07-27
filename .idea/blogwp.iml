@@ -94,7 +94,6 @@
     <orderEntry type="library" scope="PROVIDED" name="spring (v2.1.1, rbenv: 3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.0.2, rbenv: 3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.2.2, rbenv: 3.0.0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.4.2, rbenv: 3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.1.0, rbenv: 3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.0.10, rbenv: 3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v5.2.1, rbenv: 3.0.0) [gem]" level="application" />

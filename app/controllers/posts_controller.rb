@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
   def index
+    if params[:bot] == "yes"
+      @post = Post.new(params.permit(:title,:body))
+      @post.save
+    end
     @posts = Post.all
   end
 
