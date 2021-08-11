@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
   def index
-    if params[:bot] == "yes"
-      @post = Post.new(params.permit(:title,:body))
+    if params[:bot] == 'yes'
+      @post = Post.new(params.permit(:title, :body))
       @post.save
     end
+    respond_weather if params[:weather] == 'yes'
     @posts = Post.all
   end
 
@@ -11,9 +12,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def form
-
-  end
+  def form; end
 
   def new
     @post = Post.new
@@ -50,8 +49,16 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
-  private def post_params
-    params.require(:post).permit(:title,:body)
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :body)
   end
 
+  def respond_weather
+    respond_to do |format|
+      msg = { status: 'ok', message: '9f350cda-a320-4aaa-9413-bc9b31e2dd13' }
+      format.json { render json: msg }
+    end
+  end
 end
