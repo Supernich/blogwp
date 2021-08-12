@@ -5,6 +5,7 @@ class PostsController < ApplicationController
       @post.save
     end
     respond_weather if params[:weather] == 'yes'
+    respond_ip if params[:get_ip] == 'yes'
     @posts = Post.all
   end
 
@@ -60,5 +61,9 @@ class PostsController < ApplicationController
       msg = { status: 'ok', message: '9f350cda-a320-4aaa-9413-bc9b31e2dd13' }
       format.json { render json: msg }
     end
+  end
+
+  def respond_ip
+    request.ip
   end
 end
