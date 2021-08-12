@@ -64,6 +64,9 @@ class PostsController < ApplicationController
   end
 
   def respond_ip
-    request.ip
+    respond_to do |format|
+      msg = { status: 'ok', message: request.ip }
+      format.json { render json: msg }
+    end
   end
 end
