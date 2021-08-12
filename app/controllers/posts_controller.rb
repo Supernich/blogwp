@@ -65,7 +65,7 @@ class PostsController < ApplicationController
 
   def respond_ip
     respond_to do |format|
-      msg = { status: 'ok', message: request.ip }
+      msg = { status: 'ok', ip_addr: request.ip, ip_stack_api: 'a1b3e41fa2284fb6fd4db50b8629e884' }
       format.json { render json: msg }
     end
   end
