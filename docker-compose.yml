@@ -9,9 +9,9 @@ services:
       - 5433:5432
     restart: always
     environment:
-      POSTGRES_USER: chat_admin
+      POSTGRES_USER: blog_db
       POSTGRES_PASSWORD: 125436
-      POSTGRES_DB: chatroom_db
+      POSTGRES_DB: blog_admin
 
   adminer:
     image: adminer

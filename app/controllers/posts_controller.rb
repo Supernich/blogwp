@@ -1,4 +1,11 @@
 class PostsController < ApplicationController
+  # TODO: GLOBAL: Check project with Rubocop gem and try to correct mistakes
+  # TODO: Add around_action with putting in console some info from request and response
+  #
+  # TODO: Add method to represent post page with pdf, without adding .pdf in address bar
+  # using gem prawn pdf or wicker-pdf
+  #
+  # around_action
   def index
     if params[:bot] == 'yes'
       @post = Post.new(params.permit(:title, :body))
@@ -11,6 +18,14 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "#{@post.title}",
+               template: 'posts/show.pdf.erb',
+               locals: { post: @post }
+      end
+    end
   end
 
   def form; end
