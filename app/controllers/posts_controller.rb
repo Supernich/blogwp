@@ -1,11 +1,8 @@
 class PostsController < ApplicationController
   # TODO: GLOBAL: Check project with Rubocop gem and try to correct mistakes
-  # TODO: Add around_action with putting in console some info from request and response
-  #
-  # TODO: Add method to represent post page with pdf, without adding .pdf in address bar
   # using gem prawn pdf or wicker-pdf
-  #
-  # around_action
+
+  around_action :logs_in_console
   def index
     if params[:bot] == 'yes'
       @post = Post.new(params.permit(:title, :body))
@@ -66,6 +63,21 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def logs_in_console
+    time_begin = Time.now
+    logs = 'LOGS: Request: '
+    logs += "Method: #{request.request_method}, "
+    logs += "Body: #{request.body}, "
+    logs += "IP: #{request.ip}, "
+    yield
+    logs += 'Respond: '
+    logs += "Body class: #{response.body.class}, "
+    logs += "Content-type: #{response.content_type}, "
+    logs += "Response header class: #{response.header.class}, "
+    logs += "Completed in: #{Time.now - time_begin} seconds"
+    puts logs
+  end
 
   def post_params
     params.require(:post).permit(:title, :body)
